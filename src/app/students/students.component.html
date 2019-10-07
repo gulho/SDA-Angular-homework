@@ -4,26 +4,77 @@
 </div>
 <table class="table table-striped">
   <thead>
-    <tr>
-      <th scope="col">#</th>
-      <th scope="col">First name</th>
-      <th scope="col">Last name</th>
-      <th scope="col">Date of birth</th>
-      <th scope="col">Classes</th>
-    </tr>
+  <tr>
+    <th scope="col">#</th>
+    <th scope="col">First name</th>
+    <th scope="col">Last name</th>
+    <th scope="col">Date of birth</th>
+    <th scope="col">Classes</th>
+  </tr>
   </thead>
   <tbody>
-    <tr *ngFor="let student of studentsArr">
-      <td>{{student.id}}</td>
-      <td>{{student.firstName}}</td>
-      <td>{{student.lastName}}</td>
-      <td>{{student.dateOfBirth.toDateString()}}</td>
-      <td>{{student.classes}}</td>
-    </tr>
+  <tr *ngFor="let student of studentsArr">
+    <td>{{student.id}}</td>
+    <td>{{student.firstName}}</td>
+    <td>{{student.lastName}}</td>
+    <td>{{student.dateOfBirth.toDateString()}}</td>
+    <td>{{student.classes}}</td>
+  </tr>
   </tbody>
 </table>
 
 <ng-template #studentAdd let-modal>
-  <h5>work</h5>
+  <div class="modal-header">
+    <h4>Add new student</h4>
+    <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('X')">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <div class="modal-body container">
+    <p>
+      <ngb-alert [dismissible]="false" type="danger" #studentFormAlert>
+        </ngb-alert>
+    </p>
+    <form #f="ngForm">
+      <div class="row">
+        <div class="col">
+          <label for="formFirstName">Fist name:</label>
+        </div>
+        <div class="col">
+          <input type="text" id="formFirstName" name="formFirstName" ngModel>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col">
+          <label for="formLastName">Last name:</label>
+        </div>
+        <div class="col">
+          <input type="text" id="formLastName" name="formLastName" ngModel>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col">
+          <label for="formDateOfBirth">Date of birth</label>
+        </div>
+        <div class="col">
+          <input type="date" id="formDateOfBirth" name="formDateOfBirth" ngModel="">
+        </div>
+      </div>
+      <div class="row">
+        <div class="col">
+          <label for="formClasses">Classes:</label>
+        </div>
+        <div class="col">
+          <select ngModel id="formClasses" name="formClasses" multiple>
+            <option *ngFor="let key of keys(classesEnum)" [ngValue]="key" [label]="classesEnum[key]"></option>
+          </select>
+        </div>
+      </div>
+    </form>
+  </div>
+  <div class="modal-footer">
+    <button type="button" class="btn btn-danger" (click)="modal.dismiss()">Cancel</button>
+    <button type="button" class="btn btn-success" (click)="saveNewStudent(f)">Save</button>
+  </div>
 </ng-template>
 
