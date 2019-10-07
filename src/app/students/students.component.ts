@@ -33,13 +33,14 @@ export class StudentsComponent implements OnInit {
 
   saveNewStudent(f: NgForm) {
     const firstName = f.value.formFirstName;
-/*    this.showError('Fist name can\'t be empty!');
+    this.showError('Fist name can\'t be empty!');
     if (firstName.isEmpty) {
+      console.log();
       this.showError('Fist name can\'t be empty!');
-    }*/
+    }
 
     const lastName = f.value.formLastName;
-    const dateOfBirth = f.value.formDateOfBirth;
+    const dateOfBirth = new Date(f.value.formDateOfBirth);
     const classess = f.value.formClasses;
     this.studentsArr.push(new Student(this.studentsArr.length + 1, firstName, lastName, dateOfBirth, classess));
   }
