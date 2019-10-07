@@ -1,0 +1,29 @@
+<h5>Students table</h5>
+<div>
+  <button class="btn btn-primary" (click)="addNewStudent(studentAdd)">Add new student</button>
+</div>
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th scope="col">#</th>
+      <th scope="col">First name</th>
+      <th scope="col">Last name</th>
+      <th scope="col">Date of birth</th>
+      <th scope="col">Classes</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let student of studentsArr">
+      <td>{{student.id}}</td>
+      <td>{{student.firstName}}</td>
+      <td>{{student.lastName}}</td>
+      <td>{{student.dateOfBirth.toDateString()}}</td>
+      <td>{{student.classes}}</td>
+    </tr>
+  </tbody>
+</table>
+
+<ng-template #studentAdd let-modal>
+  <h5>work</h5>
+</ng-template>
+
