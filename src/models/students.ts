@@ -17,7 +17,7 @@ export class Student {
   }
 }
 
-export const Students = [
+export const students = [
   new Student(1, 'Fry', 'Philip',
     new Date(1980, 10, 12), [ClassesEnum.ANGULAR]),
   new Student(2, 'Leela', 'Turanga',

@@ -37,7 +37,7 @@ export class StudentsComponent implements OnInit {
 
     for (const item in this.classesEnum) {
       if (f.controls[item].value) {
-        classes.push(item);
+        classes.push(ClassesEnum[item]);
       }
     }
 

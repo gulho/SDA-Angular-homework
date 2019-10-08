@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
-import {Students} from '../models/students';
+import {students} from '../models/students';
+import {teachers} from '../models/teachers';
 
 @Component({
   selector: 'app-root',
@@ -9,5 +10,6 @@ import {Students} from '../models/students';
 })
 export class AppComponent {
   title = 'SDA-Angular-homework';
-  studentsArray = Students;
+  studentsArray = students;
+  teachersArray = teachers;
 }

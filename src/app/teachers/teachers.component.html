@@ -1,1 +1,89 @@
-<p>teachers works!</p>
+<h5>Teachers table</h5>
+<div class="m-1">
+  <button class="btn btn-primary" (click)="addNewTeacher(teacherAdd)">Add new teacher</button>
+</div>
+<table class="table table-striped">
+  <thead>
+  <tr>
+    <th scope="col">#</th>
+    <th scope="col">First name</th>
+    <th scope="col">Last name</th>
+    <th scope="col">Date of birth</th>
+    <th scope="col">Education</th>
+    <th scope="col">Classes</th>
+  </tr>
+  </thead>
+  <tbody>
+  <tr *ngFor="let teacher of teachersArr">
+    <td>{{teacher.id}}</td>
+    <td>{{teacher.firstName}}</td>
+    <td>{{teacher.lastName}}</td>
+    <td>{{teacher.dateOfBirth.toDateString()}}</td>
+    <td>{{teacher.education}}</td>
+    <td>{{teacher.classes}}</td>
+  </tr>
+  </tbody>
+</table>
+
+<ng-template #teacherAdd let-modal>
+  <div class="modal-header">
+    <h4>Add new student</h4>
+    <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('X')">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <div class="modal-body container">
+    <form #f="ngForm">
+      <div class="row m-1">
+        <div class="col">
+          <label for="formFirstName">Fist name:</label>
+        </div>
+        <div class="col">
+          <input type="text" id="formFirstName" name="formFirstName" ngModel class="form-control" [ngClass]="{'is-invalid': validFirstName}">
+        </div>
+      </div>
+      <div class="row m-1">
+        <div class="col">
+          <label for="formLastName">Last name:</label>
+        </div>
+        <div class="col">
+          <input type="text" id="formLastName" name="formLastName" ngModel class="form-control" [ngClass]="{'is-invalid': validLastName}">
+        </div>
+      </div>
+      <div class="row m-1">
+        <div class="col">
+          <label for="formDateOfBirth">Date of birth</label>
+        </div>
+        <div class="col">
+          <input type="date" id="formDateOfBirth" name="formDateOfBirth" ngModel class="form-control" [ngClass]="{'is-invalid': validDateOfBirth}">
+        </div>
+      </div>
+      <div class="row m-1">
+        <div class="col">
+          <label for="formLastName">Education:</label>
+        </div>
+        <div class="col">
+          <input type="text" id="formEducation" name="formEducation" ngModel class="form-control" [ngClass]="{'is-invalid': validEducation}">
+        </div>
+      </div>
+      <div class="row m-1">
+        <div class="col">
+          <label>Classes:</label>
+        </div>
+        <div class="col">
+          <div class="row form-check" *ngFor="let key of keys(classesEnum)">
+            <div class="col">
+              <input class="form-check-input" type="checkbox" value="{{key}}" id="classes_{{key}}" name="{{key}}" ngModel>
+              <label class="form-check-label" for="classes_{{key}}">{{classesEnum[key]}}</label>
+            </div>
+          </div>
+        </div>
+      </div>
+    </form>
+  </div>
+  <div class="modal-footer">
+    <button type="button" class="btn btn-danger" (click)="modal.dismiss()">Cancel</button>
+    <button type="button" class="btn btn-success" (click)="saveNewTeacher(f)">Save</button>
+  </div>
+</ng-template>
+
