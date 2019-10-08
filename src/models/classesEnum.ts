@@ -1,5 +1,9 @@
 export enum ClassesEnum {
-  Angular= 'Angular',
-  JavaBasic = 'Java Basic',
-  JavaAdvanced = 'Java Advanced'
+  ANGULAR = 'Angular',
+  JAVABASIC = 'Java Basic',
+  JAVAADVANCED = 'Java Advanced',
+  JAVASCRIPT = 'Java Script',
+  PYTHON = 'Python',
+  CSS = 'CSS',
+  SQL = 'SQL'
 }
