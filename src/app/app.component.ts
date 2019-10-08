@@ -9,7 +9,7 @@ import {teachers} from '../models/teachers';
   // styleUrls: ['./app.component.css', './css/bootstrap.css', './css/bootstrap-grid.css', './css/bootstrap-reboot.css']
 })
 export class AppComponent {
-  title = 'SDA-Angular-homework';
+  title = 'SDA Angular homework';
   studentsArray = students;
   teachersArray = teachers;
 }

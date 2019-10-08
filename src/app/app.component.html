@@ -1,5 +1,17 @@
-<h1>{{title}}</h1>
-
-<app-teachers [teachersArr]="teachersArray"></app-teachers>
+<blockquote class="blockquote text-center">
+  <h1 class="m-3">{{title}}</h1>
+</blockquote>
 <hr>
-<app-students [studentsArr]="studentsArray"></app-students>
+<ngb-tabset>
+  <ngb-tab title="Teachers">
+    <ng-template ngbTabContent>
+      <app-teachers [teachersArr]="teachersArray"></app-teachers>
+    </ng-template>
+  </ngb-tab>
+  <ngb-tab>
+    <ng-template ngbTabTitle>Students</ng-template>
+    <ng-template ngbTabContent>
+      <app-students [studentsArr]="studentsArray"></app-students>
+    </ng-template>
+  </ngb-tab>
+</ngb-tabset>

@@ -18,14 +18,14 @@ export class Student {
 }
 
 export const students = [
-  new Student(1, 'Fry', 'Philip',
+  new Student(1, 'Fry J.', 'Philip',
     new Date(1980, 10, 12), [ClassesEnum.ANGULAR]),
   new Student(2, 'Leela', 'Turanga',
     new Date(1985, 5, 15), [ClassesEnum.ANGULAR, ClassesEnum.JAVABASIC]),
-  new Student(2, 'Bender', 'Rodriguez',
+  new Student(3, 'Bender', 'Rodriguez',
     new Date(1950, 4, 15), [ClassesEnum.JAVAADVANCED]),
-  new Student(2, 'Hubert J.', 'Farnsworth',
+  new Student(4, 'Hubert J.', 'Farnsworth',
     new Date(1970, 7, 20), [ClassesEnum.ANGULAR, ClassesEnum.JAVABASIC, ClassesEnum.JAVAADVANCED]),
-  new Student(2, 'Dr. John A.', 'Zoidberg',
+  new Student(5, 'Dr. John A.', 'Zoidberg',
     new Date(1973, 9, 1), [ClassesEnum.JAVABASIC]),
 ];
