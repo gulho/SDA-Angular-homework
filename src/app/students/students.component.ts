@@ -1,4 +1,4 @@
-import {Component, ContentChild, ElementRef, Input, OnInit, TemplateRef, ViewChild} from '@angular/core';
+import {Component, Input, OnInit, ViewChild} from '@angular/core';
 import {Student} from '../../models/students';
 import {NgbAlert, NgbModal} from '@ng-bootstrap/ng-bootstrap';
 import {NgForm} from '@angular/forms';
@@ -12,37 +12,44 @@ import {ClassesEnum} from '../../models/classesEnum';
 export class StudentsComponent implements OnInit {
 
   @Input() studentsArr: [Student];
-  @ViewChild('studentFormAlert', {static: false}) alert: ElementRef;
+  @ViewChild('studentFormAlert', {static: false}) alert: NgbAlert;
   classesEnum = ClassesEnum;
   keys = Object.keys;
+
+  validFirstName = false;
+  validLastName = false;
+  validDateOfBirth = false;
 
   constructor(private modalService: NgbModal) { }
 
   ngOnInit() {
-    console.log(this.classesEnum);
   }
 
   addNewStudent(studentAdd) {
-    this.modalService.open(studentAdd, {}).result.then((result) => {alert('da'); });
-  }
-
-  showError(error: string) {
-    console.log(error);
-    this.alert.nativeElement.value(error);
+    this.modalService.open(studentAdd, {});
   }
 
   saveNewStudent(f: NgForm) {
-    const firstName = f.value.formFirstName;
-    this.showError('Fist name can\'t be empty!');
-    if (firstName.isEmpty) {
-      console.log();
-      this.showError('Fist name can\'t be empty!');
+    const firstName = f.value.formFirstName.trim();
+    const lastName = f.value.formLastName.trim();
+    const dateOfBirth = new Date(f.value.formDateOfBirth);
+    const classes = [];
+
+    for (const item in this.classesEnum) {
+      if (f.controls[item].value) {
+        classes.push(item);
+      }
     }
 
-    const lastName = f.value.formLastName;
-    const dateOfBirth = new Date(f.value.formDateOfBirth);
-    const classess = f.value.formClasses;
-    this.studentsArr.push(new Student(this.studentsArr.length + 1, firstName, lastName, dateOfBirth, classess));
+    (firstName.length === 0) ? this.validFirstName = true : this.validFirstName = false;
+    (lastName.length === 0) ? this.validLastName = true : this.validLastName = false;
+    // @ts-ignore
+    (isNaN(dateOfBirth)) ? this.validDateOfBirth = true : this.validDateOfBirth = false;
+
+    if (!this.validDateOfBirth && !this.validLastName && !this.validFirstName) {
+      this.studentsArr.push(new Student(this.studentsArr.length + 1, firstName, lastName, dateOfBirth, classes));
+      this.modalService.dismissAll();
+    }
   }
 
 }

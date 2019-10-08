@@ -31,17 +31,13 @@
     </button>
   </div>
   <div class="modal-body container">
-    <p>
-      <ngb-alert [dismissible]="false" type="danger" #studentFormAlert>
-        </ngb-alert>
-    </p>
     <form #f="ngForm">
       <div class="row m-1">
         <div class="col">
           <label for="formFirstName">Fist name:</label>
         </div>
         <div class="col">
-          <input type="text" id="formFirstName" name="formFirstName" ngModel class="form-control" #formFirstName>
+          <input type="text" id="formFirstName" name="formFirstName" ngModel class="form-control" [ngClass]="{'is-invalid': validFirstName}">
         </div>
       </div>
       <div class="row m-1">
@@ -49,7 +45,7 @@
           <label for="formLastName">Last name:</label>
         </div>
         <div class="col">
-          <input type="text" id="formLastName" name="formLastName" ngModel class="form-control">
+          <input type="text" id="formLastName" name="formLastName" ngModel class="form-control" [ngClass]="{'is-invalid': validLastName}">
         </div>
       </div>
       <div class="row m-1">
@@ -57,17 +53,20 @@
           <label for="formDateOfBirth">Date of birth</label>
         </div>
         <div class="col">
-          <input type="date" id="formDateOfBirth" name="formDateOfBirth" ngModel="" class="form-control">
+          <input type="date" id="formDateOfBirth" name="formDateOfBirth" ngModel class="form-control" [ngClass]="{'is-invalid': validDateOfBirth}">
         </div>
       </div>
       <div class="row m-1">
         <div class="col">
-          <label for="formClasses">Classes:</label>
+          <label>Classes:</label>
         </div>
         <div class="col">
-          <select ngModel id="formClasses" name="formClasses" multiple class="form-control">
-            <option *ngFor="let key of keys(classesEnum)" [ngValue]="key" [label]="classesEnum[key]"></option>
-          </select>
+          <div class="row form-check" *ngFor="let key of keys(classesEnum)">
+            <div class="col">
+              <input class="form-check-input" type="checkbox" value="{{key}}" id="classes_{{key}}" name="{{key}}" ngModel>
+              <label class="form-check-label" for="classes_{{key}}">{{classesEnum[key]}}</label>
+            </div>
+          </div>
         </div>
       </div>
     </form>
