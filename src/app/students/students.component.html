@@ -17,7 +17,7 @@
     <td>{{student.id}}</td>
     <td>{{student.firstName}}</td>
     <td>{{student.lastName}}</td>
-    <td>{{student.dateOfBirth.toDateString()}}</td>
+    <td>{{student.dateOfBirth | date : "dd.MM.yyyy"}}</td>
     <td>{{student.classes}}</td>
   </tr>
   </tbody>

@@ -18,7 +18,7 @@
     <td>{{teacher.id}}</td>
     <td>{{teacher.firstName}}</td>
     <td>{{teacher.lastName}}</td>
-    <td>{{teacher.dateOfBirth.toDateString()}}</td>
+    <td>{{teacher.dateOfBirth |date : "dd.MM.yyyy"}}</td>
     <td>{{teacher.education}}</td>
     <td>{{teacher.classes}}</td>
   </tr>
