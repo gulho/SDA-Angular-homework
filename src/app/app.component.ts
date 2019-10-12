@@ -1,6 +1,4 @@
 import { Component } from '@angular/core';
-import {students} from '../models/students';
-import {teachers} from '../models/teachers';
 
 @Component({
   selector: 'app-root',
@@ -9,6 +7,4 @@ import {teachers} from '../models/teachers';
 })
 export class AppComponent {
   title = 'SDA Angular homework';
-  studentsArray = students;
-  teachersArray = teachers;
 }

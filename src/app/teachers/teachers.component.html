@@ -14,13 +14,21 @@
   </tr>
   </thead>
   <tbody>
-  <tr *ngFor="let teacher of teachersArr">
+<!--  <tr *ngFor="let teacher of teachersArr">
     <td>{{teacher.id}}</td>
     <td>{{teacher.firstName}}</td>
     <td>{{teacher.lastName}}</td>
     <td>{{teacher.dateOfBirth |date : "dd.MM.yyyy"}}</td>
     <td>{{teacher.education}}</td>
     <td>{{teacher.classes}}</td>
+  </tr>-->
+<tr *ngFor="let teacher of teachersArr">
+    <td>{{teacher.teacherId}}</td>
+    <td>{{teacher.name}}</td>
+    <td>{{teacher.school}}</td>
+    <td>{{teacher.joinDate |date : "dd.MM.yyyy"}}</td>
+    <!--<td>{{teacher.education}}</td>-->
+    <td>{{teacher.isActive}}</td>
   </tr>
   </tbody>
 </table>

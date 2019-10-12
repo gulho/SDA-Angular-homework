@@ -14,11 +14,16 @@
   </thead>
   <tbody>
   <tr *ngFor="let student of studentsArr">
-    <td>{{student.id}}</td>
+<!--    <td>{{student.id}}</td>
     <td>{{student.firstName}}</td>
     <td>{{student.lastName}}</td>
     <td>{{student.dateOfBirth | date : "dd.MM.yyyy"}}</td>
-    <td>{{student.classes}}</td>
+    <td>{{student.classes}}</td>-->
+    <td>{{student.stuentId}}</td>
+    <td>{{student.name}}</td>
+    <td>{{student.school}}</td>
+    <td>{{student.joinDate | date : "dd.MM.yyyy"}}</td>
+    <td>{{student.isActive}}</td>
   </tr>
   </tbody>
 </table>

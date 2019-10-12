@@ -1,8 +1,9 @@
-import {Component, Input, OnInit, ViewChild} from '@angular/core';
+import {Component, OnInit, ViewChild} from '@angular/core';
 import {NgForm} from '@angular/forms';
 import {ClassesEnum} from '../../models/classesEnum';
-import {Teacher} from '../../models/teachers';
+import {Teacher1, TeacherData} from './data/teachers';
 import {NgbModal} from '@ng-bootstrap/ng-bootstrap';
+import {TeacherService} from './data/teacher.service';
 
 @Component({
   selector: 'app-teachers',
@@ -11,7 +12,7 @@ import {NgbModal} from '@ng-bootstrap/ng-bootstrap';
 })
 export class TeachersComponent implements OnInit {
 
-  @Input() teachersArr: [Teacher];
+  teachersArr = [];
   classesEnum = ClassesEnum;
   keys = Object.keys;
 
@@ -20,10 +21,12 @@ export class TeachersComponent implements OnInit {
   validDateOfBirth = false;
   validEducation = false;
 
-  constructor(private modalService: NgbModal) { }
+  constructor(private modalService: NgbModal, private teacherService: TeacherService) { }
 
-  ngOnInit() {
+  ngOnInit(): void {
+    this.teacherService.getTeachers().subscribe((data: any[]) => this.teachersArr = data);
   }
+
   addNewTeacher(teacherAdd) {
     this.modalService.open(teacherAdd, {});
   }
@@ -46,10 +49,22 @@ export class TeachersComponent implements OnInit {
     (lastName.length === 0) ? this.validLastName = true : this.validLastName = false;
     // @ts-ignore
     (isNaN(dateOfBirth)) ? this.validDateOfBirth = true : this.validDateOfBirth = false;
-
+/*
     if (!this.validDateOfBirth && !this.validLastName && !this.validFirstName && !this.validEducation) {
       this.teachersArr.push(new Teacher(this.teachersArr.length + 1, firstName, lastName, dateOfBirth, classes, education));
       this.modalService.dismissAll();
-    }
+    }*/
+
+    const teacherDataInstance = new TeacherData();
+/*    const joinDateString = f.value.joindate.month.toString() + '-' + f.value.joindate.day.toString() + '-' +
+      f.value.joindate.year.toString();*/
+
+    teacherDataInstance.createTeacher(new Teacher1(
+      firstName + lastName,
+      dateOfBirth,
+       true,
+      'schoolTallinn',
+      classes));
+    this.modalService.dismissAll();
   }
 }

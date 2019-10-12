@@ -1,6 +1,11 @@
-<blockquote class="blockquote text-center">
-  <h1 class="m-3">{{title}}</h1>
-</blockquote>
+<!--
+
+<hr>
+<div class="row">
+  <div class="col">
+    <app-user></app-user>
+  </div>
+</div>
 <hr>
 <ngb-tabset>
   <ngb-tab title="Teachers">
@@ -15,3 +20,33 @@
     </ng-template>
   </ngb-tab>
 </ngb-tabset>
+-->
+<!--<nav>
+  <a routerLink="/teacher" routerLinkActive="active">Teacher</a>
+  <a routerLink="/student" routerLinkActive="active">Student</a>
+</nav>-->
+<blockquote class="blockquote text-center">
+  <h1 class="m-3">{{title}}</h1>
+</blockquote>
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+  <a class="navbar-brand" routerLink="">Home</a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+    <ul class="navbar-nav mr-auto">
+      <li class="nav-item">
+        <a class="nav-link" routerLink="/teacher">Teacher</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" routerLink="/student">Student</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" routerLink="/login">Login</a>
+      </li>
+    </ul>
+  </div>
+</nav>
+<br><br>
+<router-outlet></router-outlet>

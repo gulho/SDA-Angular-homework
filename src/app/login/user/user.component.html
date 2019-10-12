@@ -1,0 +1,28 @@
+<form #f="ngForm" (ngSubmit)="login(f)">
+  <div class="row">
+    <div class="col-md-1">
+      <label for="username">Username:</label>
+    </div>
+    <div class="col-md-1">
+      <input type="text" placeholder="username" id="username" name="username" ngModel>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-1">
+      <label for="password">Password:</label>
+    </div>
+    <div class="col-md-1">
+      <input id="password" type="password" ngModel name="password">
+    </div>
+  </div>
+  <br>
+  <div class="row">
+    <div class="col-md-1">
+      <button class="btn btn-warning" type="reset">Reset</button>
+    </div>
+    <div class="col-md-1">
+      <button class="btn btn-primary" type="submit">Login</button>
+    </div>
+  </div>
+</form>
+<p>{{username}} : {{password}} </p>
